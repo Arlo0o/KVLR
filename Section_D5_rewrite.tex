@@ -1,0 +1,138 @@
+\subsection{Detailed Kinematic-Prior Learning}
+\label{app:detailed_kinematic_prior}
+
+This section expands the kinematic-prior learning objective introduced in Sec.~2.4. The purpose of these losses is not to force the router to use all experts uniformly, but to make expert usage agree with the physical content of the lifted action field and remain stable across time. In implementation, the auxiliary objective is attached to the action encoder and added to the flow-matching training loss whenever the structured MoE action pathway is enabled.
+
+\paragraph{Notation and routing statistics.}
+Let $K\in\mathbb{R}^{B\times T\times H\times W\times 9}$ be the Kinematic-to-Visual Action Field. The nine channels are ordered as semantic part indicators $K_{\mathrm{sem}}\in\mathbb{R}^{3}$, depth $K_{\mathrm{dep}}\in\mathbb{R}$, local rotation $K_{\mathrm{rot}}\in\mathbb{R}$, velocity $K_{\mathrm{vel}}\in\mathbb{R}^{3}$, and acceleration $K_{\mathrm{acc}}\in\mathbb{R}$. The outer router predicts token-wise logits
+\[
+    G\in\mathbb{R}^{BT\times |\mathcal{M}|\times H'\times W'},\qquad
+    \mathcal{M}=\{\mathrm{sem},\mathrm{dep},\mathrm{rot},\mathrm{vel},\mathrm{acc}\},
+\]
+where $(H',W')$ is the spatial resolution of the routing grid. We denote the soft routing probability by $P=\mathrm{softmax}(G)$ and the binary top-$k$ routing mask by $A\in\{0,1\}^{BT\times |\mathcal{M}|\times H'\times W'}$. In our default setting, the outer router uses top-$k=2$ experts per token. For each modality expert $i$, the realized sparse routing load is measured by
+\[
+    f_i=\mathbb{E}_{b,t,h,w}[A_{b,t,i,h,w}],\qquad
+    p_i=\mathbb{E}_{b,t,h,w}[P_{b,t,i,h,w}],\qquad
+    \ell_i=f_i p_i .
+\]
+Here $f_i$ captures the hard fraction of tokens assigned to expert $i$, while $p_i$ captures the average soft confidence assigned to that expert. Their product follows sparse MoE load estimation and prevents a high-probability but rarely selected expert, or a frequently selected but low-confidence expert, from being treated as fully utilized.
+
+\paragraph{Kinematic-prior adaptive load balancing.}
+Uniform load balancing is a poor target for surgical manipulation, because the physical causes of appearance change are highly non-uniform across frames and actions. We therefore compute a sample-dependent target distribution directly from $K$. First, $K$ is adaptively average-pooled to the router resolution $(H',W')$. At each routed token, we compute modality energies
+\[
+\begin{aligned}
+    e_{\mathrm{sem}} &= \|K_{\mathrm{sem}}\|_2,\quad
+    e_{\mathrm{dep}} = |K_{\mathrm{dep}}|,\quad
+    e_{\mathrm{rot}} = |K_{\mathrm{rot}}|,\\
+    e_{\mathrm{vel}} &= \|K_{\mathrm{vel}}\|_2,\quad
+    e_{\mathrm{acc}} = |K_{\mathrm{acc}}|.
+\end{aligned}
+\]
+These terms respectively measure tool-part presence, rendered camera-depth magnitude, articulated rotation magnitude, projected motion magnitude, and acceleration magnitude. The local physical prior is normalized over modalities:
+\[
+    \pi_i(K_{b,t,h,w})=
+    \frac{e_i(K_{b,t,h,w})}{\sum_{j\in\mathcal{M}} e_j(K_{b,t,h,w})+\epsilon}.
+\]
+The batch-level target used by the loss is the mean physical prior
+\[
+    \bar{\pi}_i(K)=\mathbb{E}_{b,t,h,w}\left[\pi_i(K_{b,t,h,w})\right].
+\]
+The KP-ALB loss then aligns the realized routing load with this physical target:
+\[
+    \mathcal{L}_{\mathrm{KP\mbox{-}ALB}}
+    =
+    \frac{1}{|\mathcal{M}|}
+    \sum_{i\in\mathcal{M}}
+    \left(\ell_i-\mathrm{sg}\!\left(\bar{\pi}_i(K)\right)\right)^2 ,
+\]
+where $\mathrm{sg}(\cdot)$ denotes stop-gradient. This loss differs from standard MoE balancing in two ways. First, the target is not uniform; it changes with the current action field. Second, the target is grounded in interpretable kinematic quantities, so semantic/depth experts are favored in static visible tool regions, rotation experts are favored during wrist articulation, and velocity/acceleration experts are favored during fast tool motion.
+
+\paragraph{Capacity-predictor supervision.}
+The capacity predictor is a lightweight $1\times1$ convolutional network that predicts which outer experts will be active without recomputing full top-$k$ routing at inference time. It receives the detached shared action feature $c_{\mathrm{act}}$ and outputs raw logits
+\[
+    \widehat{A}=Q_\psi(\mathrm{sg}(c_{\mathrm{act}}))
+    \in\mathbb{R}^{BT\times |\mathcal{M}|\times H'\times W'} .
+\]
+The target is the router-induced binary routing mask $A$. We train the predictor with binary cross-entropy with logits:
+\[
+    \mathcal{L}_{\mathrm{CP}}
+    =
+    \mathrm{BCEWithLogits}\!\left(\widehat{A},\mathrm{sg}(A)\right).
+\]
+Detaching $c_{\mathrm{act}}$ and $A$ makes this term supervise the predictor rather than changing the main router to become easier to predict. During dense warm-up, all experts contribute through softmax fusion, but the same top-$k$ mask induced by the router probabilities is used as a synthetic target for this loss. During sparse training, $A$ is the actual top-$k$ routing decision.
+
+At inference, the predictor probability $\sigma(\widehat{A})$ is compared with an expert-wise threshold. These thresholds are updated during training by an exponential moving average of expert-wise quantiles:
+\[
+    \tau_i \leftarrow \beta \tau_i + (1-\beta)\,
+    \mathrm{Quantile}_{1-\bar{a}_i}\!\left(\sigma(\widehat{A}_i)\right),
+\]
+where $\bar{a}_i=\mathbb{E}[A_i]$ is the observed fraction of routed tokens for expert $i$ and $\beta=0.95$ in our implementation. The quantile level is clamped for numerical stability, but the threshold is updated even when an expert receives nearly zero or nearly all tokens. This avoids positive-feedback expert starvation: an unused expert still receives an updated threshold instead of being permanently suppressed.
+
+\paragraph{Spatiotemporal routing consistency.}
+The SRC term reduces frame-to-frame routing flicker around articulated instruments. Instead of applying temporal smoothness to the entire image, we derive a binary tool mask from the semantic channels of $K$. Specifically, the semantic channels are max-pooled to $(H',W')$, and a token is marked as tool-present when any semantic channel is active. Let
+\[
+    M^{\mathrm{tool}}\in\{0,1\}^{B\times T\times 1\times H'\times W'}
+\]
+denote this mask. The continuous routing probability used by SRC is the capacity-predictor probability
+\[
+    R=\sigma(\widehat{A})\in[0,1]^{B\times T\times |\mathcal{M}|\times H'\times W'} .
+\]
+We penalize temporal differences only inside tool regions:
+\[
+    \mathcal{L}_{\mathrm{SRC}}
+    =
+    \frac{
+    \sum_{b,t=2}^{T}\sum_{i,h,w}
+    M^{\mathrm{tool}}_{b,t,1,h,w}
+    \left(R_{b,t,i,h,w}-R_{b,t-1,i,h,w}\right)^2
+    }{
+    |\mathcal{M}|\sum_{b,t=2}^{T}\sum_{h,w}M^{\mathrm{tool}}_{b,t,1,h,w}+\epsilon
+    } .
+\]
+This formulation stabilizes expert selection on moving tools and tool tips, while avoiding unnecessary constraints on static background regions. If a clip contains only one frame after temporal sampling, the SRC term is set to zero.
+
+\paragraph{Tier-2 routing stabilizer.}
+Within each modality expert, KVLR further routes features to three sub-experts: fine manipulation, transport motion, and skip. The inner router uses top-1 routing. Although the main paper groups this under hierarchical routing, the implementation includes a small auxiliary stabilizer to prevent collapse of the Tier-2 router:
+\[
+    \mathcal{L}_{\mathrm{sub}}
+    =
+    \frac{1}{|\mathcal{M}|}\sum_{m\in\mathcal{M}}
+    |\mathcal{S}|\sum_{s\in\mathcal{S}} f_{m,s}p_{m,s},
+    \qquad
+    \mathcal{S}=\{\mathrm{fine},\mathrm{transport},\mathrm{skip}\}.
+\]
+Here $f_{m,s}$ and $p_{m,s}$ are the hard assignment fraction and mean soft probability of sub-expert $s$ inside modality branch $m$. This term is lightweight and acts as an implementation-level stabilization term for the nested router.
+
+\paragraph{Capacity schedule and final objective.}
+The routing path is trained with a three-stage capacity schedule. Stage I uses dense softmax fusion so that all modality experts receive gradient signal. Stage II linearly interpolates between dense fusion and sparse top-$k$ fusion. Stage III uses fully sparse top-$k$ fusion. In the default configuration, Stage I occupies the first $40\%$ of training and Stage II ends at $75\%$ of training. The auxiliary losses above are active during training whenever a routing mask is available.
+
+The primary generation objective is the flow-matching loss. With latent endpoints $x_0$ and $x_1$, the training target is
+\[
+    v_t=(1-\sigma_{\min})x_1-x_0,
+\]
+and the model prediction is trained with mean-squared error:
+\[
+    \mathcal{L}_{\mathrm{Flow}}
+    =
+    \mathbb{E}\left[\|\hat{v}_t-v_t\|_2^2\right].
+\]
+For image-to-video conditioning, the implementation can exclude conditioned reference frames from this MSE so that the loss focuses on generated frames.
+
+The full training objective for the structured action model is
+\[
+    \mathcal{L}_{\mathrm{total}}
+    =
+    \mathcal{L}_{\mathrm{Flow}}
+    +\lambda_{\mathrm{kp}}\mathcal{L}_{\mathrm{KP\mbox{-}ALB}}
+    +\lambda_{\mathrm{src}}\mathcal{L}_{\mathrm{SRC}}
+    +\lambda_{\mathrm{cp}}\mathcal{L}_{\mathrm{CP}}
+    +\lambda_{\mathrm{sub}}\mathcal{L}_{\mathrm{sub}} .
+\]
+Unless otherwise specified, we use
+\[
+    \lambda_{\mathrm{kp}}=0.01,\qquad
+    \lambda_{\mathrm{src}}=0.005,\qquad
+    \lambda_{\mathrm{cp}}=0.01,\qquad
+    \lambda_{\mathrm{sub}}=0.005 .
+\]
+In the compact objective in Sec.~2.4, $\mathcal{L}_{\mathrm{sub}}$ can be viewed as a small nested-router stabilization term associated with hierarchical routing, while the three primary kinematic-prior losses are KP-ALB, SRC, and CP.
