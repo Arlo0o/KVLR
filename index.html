@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="KVLR project page for action-conditioned surgical video generation from articulated kinematics."
+    />
+    <title>KVLR | Routed Visual Control for Surgical Video Generation</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" data-header>
+      <nav class="nav-shell" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="KVLR home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>KVLR</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          Menu
+        </button>
+        <div class="nav-links" id="site-nav">
+          <a href="#abstract">Abstract</a>
+          <a href="#method">Method</a>
+          <a href="#kasa">KASA</a>
+          <a href="#results">Results</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#resources">Resources</a>
+          <a href="#citation">Citation</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Action-conditioned surgical video generation</p>
+          <h1>
+            <span class="title-line">From Articulated Kinematics</span>
+            <span class="title-line">to Routed Visual Control</span>
+          </h1>
+          <p class="lead">
+            KVLR turns sparse surgical robot actions into image-aligned visual control fields, then
+            routes conditioning across physical modalities and motion scales for faithful, realistic,
+            and efficient video synthesis.
+          </p>
+          <div class="hero-actions" aria-label="Project resources">
+            <a class="button primary" href="public/assets/KVLR.pdf">Paper PDF</a>
+            <a class="button secondary" href="#demo">Demo Video</a>
+            <a class="button ghost" href="#resources">Code and Data</a>
+          </div>
+        </div>
+
+        <div class="stat-grid" aria-label="Key paper highlights">
+          <div class="stat">
+            <strong>5</strong>
+            <span>image-aligned control modalities</span>
+          </div>
+          <div class="stat">
+            <strong>26.6%</strong>
+            <span>Chamfer Distance decrease over strong baselines</span>
+          </div>
+          <div class="stat">
+            <strong>38.4%</strong>
+            <span>FID decrease with structured visual routing</span>
+          </div>
+          <div class="stat">
+            <strong>47.1%</strong>
+            <span>lower latency for KVLR-fast at 288 x 512</span>
+          </div>
+        </div>
+
+        <figure class="wide-figure hero-figure">
+          <img
+            src="public/assets/teaser.webp"
+            alt="KVLR teaser showing kinematic-to-visual lifting, hierarchical routing, performance gains, and KASA annotation examples."
+            width="2200"
+            height="1014"
+            loading="eager"
+          />
+          <figcaption>
+            KVLR lifts articulated kinematics into visual control and uses hierarchical routing to
+            activate the most relevant modality and motion-scale pathways.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="band summary-band" id="abstract">
+        <div class="section-heading">
+          <p class="eyebrow">Abstract</p>
+          <h2>Kinematic control that lands in image space</h2>
+        </div>
+        <div class="summary-layout">
+          <p>
+            Action-conditioned surgical video generation asks a model to synthesize realistic visual
+            outcomes from desired robotic actions. The hard part is the representational gap: a
+            compact articulated control vector must govern detailed tool appearance, occlusion,
+            tissue interaction, and temporal motion in image space.
+          </p>
+          <p>
+            KVLR introduces a kinematic-to-visual lifting paradigm that converts articulated actions
+            into five interpretable, pixel-aligned control modalities: semantics, depth, rotation,
+            velocity, and acceleration. A hierarchical routing framework then selects useful
+            modalities and motion scales, while kinematic-prior losses keep routing physically
+            meaningful, temporally stable, and efficient.
+          </p>
+        </div>
+      </section>
+
+      <section class="band compact-band">
+        <div class="feature-grid">
+          <article class="feature-card">
+            <p class="card-kicker">Representation</p>
+            <h3>KVA-Field</h3>
+            <p>
+              A projected action field encodes where the tool is, how it is oriented, and how it is
+              moving, using control signals that can be derived from articulated actions.
+            </p>
+          </article>
+          <article class="feature-card">
+            <p class="card-kicker">Routing</p>
+            <h3>Two-tier control</h3>
+            <p>
+              Modality routing selects physical cues, while motion-scale routing specializes
+              computation for fine manipulation, transport motion, and stable regions.
+            </p>
+          </article>
+          <article class="feature-card">
+            <p class="card-kicker">Efficiency</p>
+            <h3>Action-adaptive execution</h3>
+            <p>
+              Routing significance exposes conditional sparsity, enabling KVLR-fast to skip or
+              reuse low-significance pathways without discarding action alignment.
+            </p>
+          </article>
+          <article class="feature-card">
+            <p class="card-kicker">Benchmark</p>
+            <h3>KASA</h3>
+            <p>
+              A curated benchmark pairs real robotic surgical videos with articulated action
+              annotations for knotting, needle grasping, and needle puncture.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band demo-band" id="demo">
+        <div class="section-heading">
+          <p class="eyebrow">Demo</p>
+          <h2>Action-conditioned synthesis in motion</h2>
+        </div>
+        <div class="demo-layout">
+          <div class="video-frame">
+            <video
+              controls
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              poster="public/assets/teaser.webp"
+            >
+              <source src="public/assets/demo.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="demo-copy">
+            <p>
+              The supplementary video highlights the central behavior of KVLR: generated frames
+              remain visually plausible while following the supplied articulated surgical action
+              trajectory.
+            </p>
+            <dl class="definition-list">
+              <div>
+                <dt>Input</dt>
+                <dd>Reference frame, prompt, and 9D articulated action sequence.</dd>
+              </div>
+              <div>
+                <dt>Control basis</dt>
+                <dd>Part semantics, depth, local rotation, velocity, and acceleration.</dd>
+              </div>
+              <div>
+                <dt>Output</dt>
+                <dd>Action-faithful surgical video with adaptive control computation.</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="band method-band" id="method">
+        <div class="section-heading">
+          <p class="eyebrow">Method</p>
+          <h2>Lifting first, routing second</h2>
+        </div>
+        <figure class="wide-figure">
+          <img
+            src="public/assets/overall.webp"
+            alt="Architecture overview of KVLR with KVA-Field lifting, modality routing, motion-scale routing, and adaptive efficient generation."
+            width="2200"
+            height="1117"
+            loading="eager"
+          />
+          <figcaption>
+            Articulated kinematics are lifted into a KVA-Field before hierarchical routing allocates
+            control capacity across modalities and motion scales.
+          </figcaption>
+        </figure>
+        <div class="method-steps">
+          <article>
+            <span>01</span>
+            <h3>Project articulated kinematics</h3>
+            <p>
+              The shaft, wrist, and grippers are reconstructed as part-aware geometry and projected
+              into the camera view.
+            </p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Build image-aligned controls</h3>
+            <p>
+              Pixel-aligned channels encode part semantics, rendered depth, orientation, velocity,
+              and acceleration.
+            </p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Route conditional computation</h3>
+            <p>
+              Tier-1 routing chooses useful physical modalities; Tier-2 routing specializes updates
+              by motion scale.
+            </p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Exploit routing sparsity</h3>
+            <p>
+              KVLR-fast combines few-step distillation, spatial adaptive execution, and temporal
+              cache reuse for low-latency synthesis.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band kasa-band" id="kasa">
+        <div class="section-heading">
+          <p class="eyebrow">KASA Benchmark</p>
+          <h2>KASA action supervision</h2>
+        </div>
+        <div class="kasa-grid">
+          <figure class="wide-figure">
+            <img
+              src="public/assets/dataset.webp"
+              alt="KASA data construction pipeline from surgical videos to semantic annotation and articulated pose tracking."
+              width="2200"
+              height="785"
+              loading="eager"
+            />
+            <figcaption>
+              KASA combines human-in-the-loop semantic annotation with differentiable pose tracking
+              to obtain lightweight, visually grounded action supervision.
+            </figcaption>
+          </figure>
+          <div class="kasa-facts" aria-label="KASA benchmark facts">
+            <div>
+              <strong>1,047</strong>
+              <span>surgical scenes</span>
+            </div>
+            <div>
+              <strong>105,175</strong>
+              <span>video frames</span>
+            </div>
+            <div>
+              <strong>3</strong>
+              <span>representative actions</span>
+            </div>
+            <div>
+              <strong>55-235</strong>
+              <span>frames per sequence</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band results-band" id="results">
+        <div class="section-heading">
+          <p class="eyebrow">Results</p>
+          <h2>Faithful control, stronger fidelity, faster variant</h2>
+        </div>
+
+        <div class="result-metrics" aria-label="Quantitative result highlights">
+          <article>
+            <span>Action faithfulness</span>
+            <strong>CD 86.89</strong>
+            <p>Full model in the architecture ablation, compared with 111.11 from raw-action direct conditioning.</p>
+          </article>
+          <article>
+            <span>Visual fidelity</span>
+            <strong>FID 14.37</strong>
+            <p>Structured lifting plus two-tier routing improves over KVA-Field direct conditioning at 45.20.</p>
+          </article>
+          <article>
+            <span>Efficient generation</span>
+            <strong>0.37 s</strong>
+            <p>KVLR-fast latency per 17-frame clip at 288 x 512, with 0.55 PFLOPs per clip.</p>
+          </article>
+        </div>
+
+        <div class="table-grid">
+          <div class="table-wrap">
+            <h3>Architecture Ablation</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>CD</th>
+                  <th>TI</th>
+                  <th>FID</th>
+                  <th>PSNR</th>
+                  <th>Latency</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Text-only baseline</td>
+                  <td>138.88</td>
+                  <td>0.57</td>
+                  <td>93.31</td>
+                  <td>12.80</td>
+                  <td>4.59</td>
+                </tr>
+                <tr>
+                  <td>Raw action direct condition</td>
+                  <td>111.11</td>
+                  <td>0.69</td>
+                  <td>79.56</td>
+                  <td>15.08</td>
+                  <td>4.61</td>
+                </tr>
+                <tr>
+                  <td>KVA-Field direct condition</td>
+                  <td>96.45</td>
+                  <td>0.78</td>
+                  <td>45.20</td>
+                  <td>17.65</td>
+                  <td>4.68</td>
+                </tr>
+                <tr>
+                  <td>KVA-Field with Tier-1 routing</td>
+                  <td>91.30</td>
+                  <td>0.84</td>
+                  <td>26.85</td>
+                  <td>19.34</td>
+                  <td>4.66</td>
+                </tr>
+                <tr class="best-row">
+                  <td>KVA-Field with Tier-1 and Tier-2 routing</td>
+                  <td>86.89</td>
+                  <td>0.89</td>
+                  <td>14.37</td>
+                  <td>20.82</td>
+                  <td>4.64</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-wrap">
+            <h3>Efficiency</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Latency</th>
+                  <th>FLOPs</th>
+                  <th>CD</th>
+                  <th>FID</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Teacher, 50 steps</td>
+                  <td>4.64</td>
+                  <td>6.94</td>
+                  <td>86.89</td>
+                  <td>14.37</td>
+                </tr>
+                <tr>
+                  <td>Generic distillation</td>
+                  <td>0.52</td>
+                  <td>0.78</td>
+                  <td>98.45</td>
+                  <td>19.82</td>
+                </tr>
+                <tr>
+                  <td>Action-aware student</td>
+                  <td>0.52</td>
+                  <td>0.78</td>
+                  <td>87.50</td>
+                  <td>15.60</td>
+                </tr>
+                <tr>
+                  <td>Spatial adaptive execution</td>
+                  <td>0.42</td>
+                  <td>0.63</td>
+                  <td>88.65</td>
+                  <td>16.55</td>
+                </tr>
+                <tr class="best-row">
+                  <td>Temporal cache, final efficient</td>
+                  <td>0.37</td>
+                  <td>0.55</td>
+                  <td>89.87</td>
+                  <td>17.67</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="band gallery-band" id="gallery">
+        <div class="section-heading">
+          <p class="eyebrow">Visual Evidence</p>
+          <h2>Comparisons, generalization, and control analysis</h2>
+        </div>
+        <div class="gallery-tabs" role="tablist" aria-label="Figure gallery">
+          <button type="button" role="tab" aria-selected="true" data-figure="compare">Comparison</button>
+          <button type="button" role="tab" aria-selected="false" data-figure="generalize">Generalization</button>
+          <button type="button" role="tab" aria-selected="false" data-figure="action">Action Field</button>
+          <button type="button" role="tab" aria-selected="false" data-figure="motion">Motion Plot</button>
+          <button type="button" role="tab" aria-selected="false" data-figure="diverse">Diverse Results</button>
+          <button type="button" role="tab" aria-selected="false" data-figure="ablation">Ablation</button>
+        </div>
+        <figure class="wide-figure gallery-figure" data-gallery-panel>
+          <img
+            src="public/assets/vis_compare.webp"
+            alt="Qualitative comparison on KASA."
+            width="3271"
+            height="1343"
+            loading="eager"
+          />
+          <figcaption>KVLR better preserves tool states and action-consistent evolution under clutter and poor illumination.</figcaption>
+        </figure>
+      </section>
+
+      <section class="band resources-band" id="resources">
+        <div class="section-heading">
+          <p class="eyebrow">Resources</p>
+          <h2>Paper, video, and anonymous release links</h2>
+        </div>
+        <div class="resource-grid">
+          <a class="resource-card" href="public/assets/KVLR.pdf">
+            <span>PDF</span>
+            <strong>Paper</strong>
+            <p>Local copy of the manuscript used to build this page.</p>
+          </a>
+          <a class="resource-card" href="public/assets/demo.mp4">
+            <span>MP4</span>
+            <strong>Supplementary Demo</strong>
+            <p>Video demonstration packaged with the supplementary material.</p>
+          </a>
+          <a
+            class="resource-card"
+            href="https://drive.google.com/drive/folders/1KRLFxWvjmfTTtImigWUMKXWAU6mhX1o5?usp=sharing"
+          >
+            <span>CKPT</span>
+            <strong>Checkpoints</strong>
+            <p>Anonymous checkpoint release referenced by the supplementary package.</p>
+          </a>
+          <a
+            class="resource-card"
+            href="https://drive.google.com/drive/folders/14vHj7IB-pA09QhrYT7D06Ei6A6md3z8k?usp=sharing"
+          >
+            <span>DATA</span>
+            <strong>KASA Data</strong>
+            <p>Anonymous KASA data folder with annotations and surgical action subsets.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="band citation-band" id="citation">
+        <div class="section-heading">
+          <p class="eyebrow">Citation</p>
+          <h2>Reference this work</h2>
+        </div>
+        <pre class="citation-block"><code>@article{li2026articulated,
+  title={From Articulated Kinematics to Routed Visual Control for Action-Conditioned Surgical Video Generation},
+  author={Li, Bohan and Yang, Shuojue and Peng, Baorui and Guo, Xianda and Zhang, Erli and Tao, Youqi and Duan, Junfeng and Xu, Daguang and Dou, Qi and Jin, Xin and others},
+  journal={arXiv preprint arXiv:2605.08712},
+  year={2026}
+}</code></pre>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>KVLR project page for anonymous review.</p>
+    </footer>
+
+    <div class="lightbox" data-lightbox hidden>
+      <button class="lightbox-close" type="button" aria-label="Close preview">x</button>
+      <img alt="" />
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
