@@ -149,6 +149,42 @@ button {
   align-items: center;
 }
 
+.authors,
+.affiliations {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 980px;
+  gap: 10px 22px;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+.authors {
+  margin: 4px 0 14px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.affiliations {
+  margin: 0 0 28px;
+  font-size: 0.875rem;
+}
+
+.authors span,
+.affiliations span {
+  white-space: nowrap;
+}
+
+.authors sup,
+.affiliations sup {
+  margin-left: 3px;
+  margin-right: 3px;
+  color: var(--teal-dark);
+  font-size: 0.7em;
+}
+
 .conference {
   margin: 0 0 20px;
   padding: 8px 0;
