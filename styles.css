@@ -149,6 +149,16 @@ button {
   align-items: center;
 }
 
+.conference {
+  margin: 0 0 20px;
+  padding: 8px 0;
+  border-bottom: 2px solid var(--teal);
+  color: var(--teal-dark);
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
 .eyebrow {
   margin: 0 0 12px;
   color: var(--teal-dark);
@@ -623,7 +633,7 @@ th {
 
 .resource-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
