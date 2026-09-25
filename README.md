@@ -1,13 +1,20 @@
-# KVLR Anonymous Supplementary Code
+# KVLR [NeurIPS 2026]
 
-This directory contains the implementation used for the anonymous NeurIPS submission
-**"Hierarchical Kinematic-to-Visual Action Routing for Action-Faithful Surgical Video Generation"**.
+**From Articulated Kinematics to Routed Visual Control for Action-Conditioned Surgical Video Generation**
+
+Accepted at **NeurIPS 2026**.
+
+[Project Page](https://arlo0o.github.io/KVLR-project/) | [Paper](https://arxiv.org/abs/2605.08712) | [Video](https://arlo0o.github.io/KVLR-project/#demo) | [Citation](#citation)
+
+Bohan Li, Shuojue Yang, Baorui Peng, Xianda Guo, Erli Zhang, Youqi Tao, Junfeng Duan, Daguang Xu, Qi Dou, Xin Jin, Wenjun Zeng, Hao Zhao, Yueming Jin.
+
+This repository contains the KVLR implementation.
 It includes KVLR teacher training/inference, KVLR-fast student distillation, efficiency profiling,
 and metric evaluation code.
 
 ![KVLR overview](assert/teaser.png)
 
-## Anonymous Resources
+## Resources
 
 - Checkpoints: https://drive.google.com/drive/folders/1KRLFxWvjmfTTtImigWUMKXWAU6mhX1o5?usp=sharing
 - KASA data: https://drive.google.com/drive/folders/14vHj7IB-pA09QhrYT7D06Ei6A6md3z8k?usp=sharing
@@ -198,5 +205,17 @@ python scripts/evaluate_video_metrics.py \
 - `KVLR/losses/` contains the routing, control, budget, and temporal distillation losses.
 - Generated outputs, downloaded data, checkpoints, caches, and local logs are intentionally excluded by `.supplementignore`.
 
-This supplementary package has been scrubbed for anonymous review: local cluster paths, user names,
-cache files, and one-off backup scripts are not required for reproduction.
+Local cluster paths, cache files, and one-off backup scripts are not required for reproduction.
+
+## Citation
+
+If you use KVLR in your research, please cite the paper:
+
+```bibtex
+@article{li2026articulated,
+  title={From Articulated Kinematics to Routed Visual Control for Action-Conditioned Surgical Video Generation},
+  author={Li, Bohan and Yang, Shuojue and Peng, Baorui and Guo, Xianda and Zhang, Erli and Tao, Youqi and Duan, Junfeng and Xu, Daguang and Dou, Qi and Jin, Xin and others},
+  journal={arXiv preprint arXiv:2605.08712},
+  year={2026}
+}
+```
