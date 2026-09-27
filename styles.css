@@ -177,6 +177,10 @@ button {
   white-space: nowrap;
 }
 
+.affiliations .affiliation-long {
+  white-space: normal;
+}
+
 .authors sup,
 .affiliations sup {
   margin-left: 3px;
