@@ -1,0 +1,726 @@
+{
+  "release_date": "2026-10-08",
+  "status": "released",
+  "source_commit": "1c68c9f6a1139cc45abeadae52d2b4ddb7bce049",
+  "validation": {
+    "python_syntax_files": 86,
+    "shell_syntax_files": 6,
+    "gpu_experiments": "NOT RUN"
+  },
+  "files": [
+    {
+      "path": ".gitignore",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 74,
+      "sha256": "9d0e3f9106dbe5b6babf03db871938f0d630aa227f120980494766910cf90150"
+    },
+    {
+      "path": "KASA_DATA.md",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 730,
+      "sha256": "87f5dc83a45e47d3cd6dea643d3d195e486c9263837739007cced2979dc6e18d"
+    },
+    {
+      "path": "KVLR/__init__.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "KVLR/acceleration/__init__.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "KVLR/acceleration/checkpoint.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 12437,
+      "sha256": "77d159c672fdb73c23e1b9c41155c9da7c3a3d62935a70b335b7b283ad3cec65"
+    },
+    {
+      "path": "KVLR/acceleration/communications.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 5329,
+      "sha256": "7f27caeb35818d6e7e94c80953af96c09f0e5f687b45d36de816ff503d440626"
+    },
+    {
+      "path": "KVLR/acceleration/parallel_states.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 823,
+      "sha256": "eac48e196004fd6e351400371b3125718c376cf6493a542762b34c9bc55e21ce"
+    },
+    {
+      "path": "KVLR/acceleration/shardformer/__init__.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "KVLR/acceleration/shardformer/modeling/__init__.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "KVLR/acceleration/shardformer/modeling/t5.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1778,
+      "sha256": "b9183c6a1266829bfd4a411fd7ae1332f86c21fca1ec4afd203f627a0549e32b"
+    },
+    {
+      "path": "KVLR/acceleration/shardformer/policy/__init__.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "KVLR/acceleration/shardformer/policy/t5_encoder.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1495,
+      "sha256": "f486d3ca61543e8e0f7cfbf6a54f0981df371902927ae4bdb9369a42f57f82c4"
+    },
+    {
+      "path": "KVLR/datasets/__init__.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 174,
+      "sha256": "05a82db70f7c05f41fc3131cdd97f186fd75511acc71a6395aaf98c8cdb59dbe"
+    },
+    {
+      "path": "KVLR/datasets/aspect.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 5089,
+      "sha256": "2568e2654f232b15bf76ad08c38f973580636463e146fffee46b8fb08eef1cf1"
+    },
+    {
+      "path": "KVLR/datasets/bucket.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 5522,
+      "sha256": "7f95b57524d8721fd89cdc308bc4854337181cd5aebdda97d98cc3b150aadc57"
+    },
+    {
+      "path": "KVLR/datasets/dataloader.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 15340,
+      "sha256": "b117f3101adfa9c1cedcd698c8c1c2e1967638dd3b23ef57e11df448a1098514"
+    },
+    {
+      "path": "KVLR/datasets/datasets.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 24012,
+      "sha256": "e2f52a7727034c5dc5f1dbb19f71087b4cd95366171cd791cd80013c33919a23"
+    },
+    {
+      "path": "KVLR/datasets/parallel.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 5840,
+      "sha256": "37fd06a272d554ab41c0ebbe16764228d88ded189aa87fb1d33373cad11bad6b"
+    },
+    {
+      "path": "KVLR/datasets/pin_memory_cache.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 3263,
+      "sha256": "235d3008797518389189e35e5d02f2c0ca0493a6cbc9f6d232d10b4abca36d38"
+    },
+    {
+      "path": "KVLR/datasets/read_video.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 9449,
+      "sha256": "c745d2ac8823f1be339dea19ff2c6b0c9b335642c92edb2d1859b7c8f65e9768"
+    },
+    {
+      "path": "KVLR/datasets/sampler.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 15862,
+      "sha256": "117a4301de12d0bd702ad6138a21cc8f68429c79dfb591281098b92b35744fc7"
+    },
+    {
+      "path": "KVLR/datasets/utils.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 15121,
+      "sha256": "c2f6e2c2f8c9db34cb92b03064a692da3c212e019283146f2cd4b8a6c234b01a"
+    },
+    {
+      "path": "KVLR/datasets/video_transforms.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 18574,
+      "sha256": "7dcfaf70d6fd0c021bb420ef4cb218e24cfb7aa4822f849ab466e3da880a3d29"
+    },
+    {
+      "path": "KVLR/losses/__init__.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 395,
+      "sha256": "815e49c0da67d403c035b95ad452b6f01b5ba1e33db0d40cdb504c5b304fc54d"
+    },
+    {
+      "path": "KVLR/losses/budget_loss.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1574,
+      "sha256": "896af2d416a0ef9df4eb925b3cf2e96f10d7495166bd1de9c70fed7e8fef511d"
+    },
+    {
+      "path": "KVLR/losses/control_fidelity_loss.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1411,
+      "sha256": "83844cde3f5842914899df70218e17456bad7b527d90f5059580cf0d68c9718c"
+    },
+    {
+      "path": "KVLR/losses/distill_loss.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 653,
+      "sha256": "afad4a118dddbe41b498c689c979371c817b56d12e8d2ebe718889f54fa13487"
+    },
+    {
+      "path": "KVLR/losses/route_distill_loss.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 2438,
+      "sha256": "0ab630a122fddb917f08e39f08946a8ad70fe2396ea6e81445e6ead02b8ba3cb"
+    },
+    {
+      "path": "KVLR/losses/temporal_cache_loss.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1028,
+      "sha256": "1678d9db8ae665e436228b37041045feaf45c88bf4f1f86bfed03a7e336037a2"
+    },
+    {
+      "path": "KVLR/models/__init__.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 115,
+      "sha256": "776387311329af0ddf63e40ec5400682fd3de18c19ec76bb7f6034f8e90e7f31"
+    },
+    {
+      "path": "KVLR/models/action_encoder.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 85299,
+      "sha256": "84f51c4badb6c09a2d096928d7c78bd9446bec75847dda5482fa2adb31cedea5"
+    },
+    {
+      "path": "KVLR/models/adaptive_exec/__init__.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 365,
+      "sha256": "d47542ba16fd462c577c651e8cc0efbae069c664b614c7f92da772e80d521d40"
+    },
+    {
+      "path": "KVLR/models/adaptive_exec/criticality_head.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 5581,
+      "sha256": "b8e3a4364cbe68a8737334bd49ce1e698820eabff2bd68e7d2f6aa216245cad4"
+    },
+    {
+      "path": "KVLR/models/adaptive_exec/feature_cache.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1484,
+      "sha256": "f6e9906248039cf4e2ef6f37286f46fa151a6960d17c88b84f222300c6eed789"
+    },
+    {
+      "path": "KVLR/models/adaptive_exec/temporal_refresh.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1572,
+      "sha256": "19d6bea8f27942da3d034b2dc4f0df0f70903faa006b62669fb49632cea764b8"
+    },
+    {
+      "path": "KVLR/models/adaptive_exec/token_scheduler.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 2197,
+      "sha256": "9c48f1bafc54602085ba925a9be2fbd782e8951fcea98c46aa74b26abc3789d6"
+    },
+    {
+      "path": "KVLR/models/hunyuan_vae/__init__.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 98,
+      "sha256": "8a1cac96ac7e947b3bb864107e28ace4960e3280ff789e9ccc00c2898f122821"
+    },
+    {
+      "path": "KVLR/models/hunyuan_vae/autoencoder_kl_causal_3d.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 26461,
+      "sha256": "461ce15a5a7461241f91d78e27ff4caaff46a6a6708b8fc6efd50af0943669e7"
+    },
+    {
+      "path": "KVLR/models/hunyuan_vae/distributed.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 22817,
+      "sha256": "d38f706620e962cef564081d036e933fcb1d388f0f410a7b954da95cffb1a2d3"
+    },
+    {
+      "path": "KVLR/models/hunyuan_vae/policy.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 6195,
+      "sha256": "3ad0604d2c1817aac16505ac0a0aedb1fe487dfc02ae422a9e468c448707dcdf"
+    },
+    {
+      "path": "KVLR/models/hunyuan_vae/unet_causal_3d_blocks.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 16238,
+      "sha256": "1261abd480495e13e936c2e5db8b25d1d0a22d1891af03a7f07ab73bdd951e21"
+    },
+    {
+      "path": "KVLR/models/hunyuan_vae/vae.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 12784,
+      "sha256": "55a22b869539fffc2a08059983aea33dc9f543d72b5af174f78a6e43dec0da49"
+    },
+    {
+      "path": "KVLR/models/kvlr_student.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1074,
+      "sha256": "994935a37d56d0f840b1710e39c882c67c8c8c165efb63af6a15f39c57c9475a"
+    },
+    {
+      "path": "KVLR/models/mmdit/__init__.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 24,
+      "sha256": "dcfaea512a2d7eedd3bf20af39b2f2d59aed2b81bf1d60326824b43bc9e72140"
+    },
+    {
+      "path": "KVLR/models/mmdit/distributed.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 41360,
+      "sha256": "233e70bf042c2567080a34c2431420f3772446ff6d4407663b4702126d9f92d8"
+    },
+    {
+      "path": "KVLR/models/mmdit/layers.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 15544,
+      "sha256": "c1766e7b60e08f6cc1a7faf61f8b7902cae5b4aba052d9c10d0fb10570b3510f"
+    },
+    {
+      "path": "KVLR/models/mmdit/math.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 4054,
+      "sha256": "6ea7a8563fffa04de9e2bd925c87e498c5384fe09b1de7315e073c9158e1a985"
+    },
+    {
+      "path": "KVLR/models/mmdit/model.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 28211,
+      "sha256": "d46509c7cd0f01c5da90ec34e462a1e968978e89cd172b8fd976554c3547c193"
+    },
+    {
+      "path": "KVLR/models/mmdit/policy.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 6195,
+      "sha256": "3ad0604d2c1817aac16505ac0a0aedb1fe487dfc02ae422a9e468c448707dcdf"
+    },
+    {
+      "path": "KVLR/models/text/__init__.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 36,
+      "sha256": "fe4e401cc58c8d287c4b26276d5d4de2b002432dbed471778624aa59ebeeef9e"
+    },
+    {
+      "path": "KVLR/models/text/conditioner.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 2946,
+      "sha256": "8ae5241ca2f1d18c31574aeb8f3c1befbaa2e0e456b77e62edbbcef57761f16e"
+    },
+    {
+      "path": "KVLR/models/vae/__init__.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 76,
+      "sha256": "8e976798cfe768e544563583c9022e2136d235371c63cbdd8a626dd230981e7b"
+    },
+    {
+      "path": "KVLR/models/vae/tensor_parallel.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 19054,
+      "sha256": "f4ead7a8ca03dad43256871438e16471ec913208c11b57ab5c4c1d15de505680"
+    },
+    {
+      "path": "KVLR/models/vae/utils.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 9850,
+      "sha256": "0bdcbbc7ce5521c20880633e7710878d6ce4c21e22e3b317c4c9b18b38abf656"
+    },
+    {
+      "path": "KVLR/registry.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1040,
+      "sha256": "a59e597d991f30d0d15d0a0e256485dfffeb339dd8bc046c94a7dadcf293eac2"
+    },
+    {
+      "path": "KVLR/utils/__init__.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "KVLR/utils/action_utils.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 32436,
+      "sha256": "3e8236eca1a1e614da176da1e1c2dc0ecbde25c1ba66f1c6ea5459f1aa38241f"
+    },
+    {
+      "path": "KVLR/utils/cai.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 2931,
+      "sha256": "21b7612637aa856e6cb20f5e1356b88d1a95e5e47eb7f1792254898d3bd24d35"
+    },
+    {
+      "path": "KVLR/utils/ckpt.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 20998,
+      "sha256": "24c9bd57ade8475156729800d1803cab6ea594256ef70f8b83d8216ddb1f2319"
+    },
+    {
+      "path": "KVLR/utils/config.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 6341,
+      "sha256": "9d6bd4048332005fcb007b0a672025f276313e2ec8994bc8d94b5d9e4d6c8d26"
+    },
+    {
+      "path": "KVLR/utils/inference.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 12599,
+      "sha256": "aa25705b8ad435991e1c10318067519359d91adb0dc19ff6e0cffbf750945cb2"
+    },
+    {
+      "path": "KVLR/utils/logger.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 2348,
+      "sha256": "37dc3a65e8c7f98b2964085bf5a73ad2882e2791f0b9398777a59f9e2fb586b7"
+    },
+    {
+      "path": "KVLR/utils/misc.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 13181,
+      "sha256": "394435fd849775fb74eda775aa483a88231cc06be48b26c54878c27c7c7a73d2"
+    },
+    {
+      "path": "KVLR/utils/optimizer.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 3074,
+      "sha256": "c95ef63bc01f72b4382c0398fa645e2bd176f2e419b0ac4d588eb2f18e5ba8fe"
+    },
+    {
+      "path": "KVLR/utils/prompt_refine.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 490,
+      "sha256": "496880b5ee677d44e273d8fa7dd8ff4bcd8945f28e086c304ca4b582783c57a8"
+    },
+    {
+      "path": "KVLR/utils/sampling.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 22918,
+      "sha256": "cfb97a0030b7f2ec435a5b4016ba7381caf83b889dfb8b678f2a14f603bc4ce0"
+    },
+    {
+      "path": "KVLR/utils/train.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 20590,
+      "sha256": "e9097f0030ac7ef89505944e94d5cccf219e9684cf335dc50442dea34b792162"
+    },
+    {
+      "path": "LICENSE",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "README.md",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 7401,
+      "sha256": "606f73d09a47b1862ee2686ac1766ae85263c1a959ecfe808f1e799f36b2a06c"
+    },
+    {
+      "path": "RELEASE.md",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1271,
+      "sha256": "6faa47c2ddd1a598296971fe02adb36b96e0f08c4234e4d554bf4a2044ab95f8"
+    },
+    {
+      "path": "assert/Architecture.png",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 854232,
+      "sha256": "e66fa921f2dd1a5b6993a735bd010ec5e066cd9f87d7a8a35280afae6a334c26"
+    },
+    {
+      "path": "assert/data_curation.png",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 557158,
+      "sha256": "85026770d522487788f2921d195b35b6143d73aaf51be5ee22d2b2ae22411119"
+    },
+    {
+      "path": "assert/teaser.png",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 590408,
+      "sha256": "97336417dd496f667bca1560dc6787e501741c6bb7604c0fc7843004642f511b"
+    },
+    {
+      "path": "configs/diffusion/inference/256px.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 2259,
+      "sha256": "12d619055da88c32d40d3b1c910f162804447e2418bb8bc8d80cdc825c938c7c"
+    },
+    {
+      "path": "configs/diffusion/inference/768px_action.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1370,
+      "sha256": "1719187ca1a9763c5c31d39a5c4d5997bd7009b48508d12214ac814e67f9dfdf"
+    },
+    {
+      "path": "configs/diffusion/inference/768px_action_student_2step_budgeted.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 425,
+      "sha256": "17b3124d0f7f17f1a3772e94cc72b23322ac1fa23d86e104dc8baa7b298ac98b"
+    },
+    {
+      "path": "configs/diffusion/inference/768px_action_student_4step.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1012,
+      "sha256": "9bec61781cd07bcc4589eeb70ea61710d7a2a9eb9d6058d1e7c2c6f8c3f65179"
+    },
+    {
+      "path": "configs/diffusion/inference/768px_action_student_4step_budgeted.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 772,
+      "sha256": "81f1511be9a5018e186661b362db9b188b04e2644e853c81582f7daeb22b4379"
+    },
+    {
+      "path": "configs/diffusion/inference/768px_action_teacher_full.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 582,
+      "sha256": "5f7e1fa26a98694f20ca4882738f387c2dc1ec9f2c1d9661f4b433c6726f1084"
+    },
+    {
+      "path": "configs/diffusion/inference/plugins/sp.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 413,
+      "sha256": "04055bca2dbe628c34a0ab448717ade4639d3e18e72f3958228a75df5edc8665"
+    },
+    {
+      "path": "configs/diffusion/train/image.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 3070,
+      "sha256": "f2a4adfa1cb8911d962caa92f303c6f0b24b434e2e69ed3e47217ec44b558df4"
+    },
+    {
+      "path": "configs/diffusion/train/stage2.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 3880,
+      "sha256": "f080640d074b3fe47f3b3a2e7d0addb334101cc65ec31579712a02ed903c7052"
+    },
+    {
+      "path": "configs/diffusion/train/stage2_i2v.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 651,
+      "sha256": "b20e5232ce5dd1616e74e1730cfeddc06583fc01f8c0f0df1daa77d434c5f0b7"
+    },
+    {
+      "path": "configs/diffusion/train/stage3_action.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1373,
+      "sha256": "d086530c87429dc5818b472036aed027d4140e49aa20e1a1fc9bffb4948fbd1f"
+    },
+    {
+      "path": "configs/diffusion/train/student_2step_budgeted.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 188,
+      "sha256": "9ef08f964b5b7a7c93595829f89bd6b72ccb99f58b8c25f87efb49387abe6273"
+    },
+    {
+      "path": "configs/diffusion/train/student_4step.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 988,
+      "sha256": "fe2b87477f7d164deda0ddf69cffb3e4a1f1379044e1ae9df35bd3e77d229c81"
+    },
+    {
+      "path": "configs/diffusion/train/student_4step_budgeted.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 590,
+      "sha256": "1343857f970b81b7db1d17870e093913ae902a9b1c738dd644c554c3e655a2c5"
+    },
+    {
+      "path": "configs/inference_tasks_example.csv",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 874,
+      "sha256": "b3a2461302e494f6ddd76ecf7b201fd428b9417de8376a1b1413b7c34177fa13"
+    },
+    {
+      "path": "requirements.txt",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 379,
+      "sha256": "dbe11b1dc8f59fcb87f909fd089221b5c224a88e577bd6b267a90f2c8ca29317"
+    },
+    {
+      "path": "scripts/batch_inference_action.sh",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 4241,
+      "sha256": "aa4914288ef3120b392f45cb1d5ac17fb612e38c648cc3a9e771864d8b5d5f57"
+    },
+    {
+      "path": "scripts/batch_inference_student.sh",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 609,
+      "sha256": "8ea57c04480d78d21fbe187073a5f1d3706332d290d22b5fc7e6d39e1e8be660"
+    },
+    {
+      "path": "scripts/diffusion/inference_action.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 11217,
+      "sha256": "12045f3486c3c217fb733c235186069c6bf424922e7ceae799d07da0d9421422"
+    },
+    {
+      "path": "scripts/diffusion/summarize_efficiency_profiles.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1329,
+      "sha256": "aec4ef96a07a386cf6a57d9005a315357eb99db6021b953272faa9335ca4e27e"
+    },
+    {
+      "path": "scripts/diffusion/train.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 48032,
+      "sha256": "0277dbbe621b5d13fedadee83bb7cbdf53cb04064a9ebbdc30cfb114fafa0c79"
+    },
+    {
+      "path": "scripts/evaluate_video_metrics.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 30773,
+      "sha256": "66e48d7da89b61110d2f6a9ffa04961cd7e8ccb29cf196eac6644ad1d3881c70"
+    },
+    {
+      "path": "scripts/make_csv.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 2620,
+      "sha256": "2837ea085827bb1f8e234da84985b6a61fb58e01eda61de7a6c0276b69f50afd"
+    },
+    {
+      "path": "scripts/prepare_surgical_dataset.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 5509,
+      "sha256": "caf26d1c799c4f2085c65f5dd06b40515c1281d2dded6ba16405d4784ea1602c"
+    },
+    {
+      "path": "scripts/profile_efficiency_compare.sh",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 2599,
+      "sha256": "cb518b0de57f294b6615805f862ffd73f98bae2d1aa888e1c36f5de97b790e18"
+    },
+    {
+      "path": "scripts/train_stage2_i2v.sh",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1897,
+      "sha256": "1516d29a5531b3527a86cafcd69fed8ba02c1ecee341cc8cc7e0084cd3632e5e"
+    },
+    {
+      "path": "scripts/train_stage3_action.sh",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 2021,
+      "sha256": "6f2af2b0ed9f921cb6543fdfca7519dc70f6c71b57738d5f9a17733d6fa4f6f3"
+    },
+    {
+      "path": "scripts/train_student_distill.sh",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 3983,
+      "sha256": "f49e817567d7df78a6255c041330f97c270decd8208700703ee83f4aea7e695e"
+    },
+    {
+      "path": "setup.py",
+      "updated_at": "2026-10-08",
+      "status": "released",
+      "bytes": 1932,
+      "sha256": "305353f3494d5ea13a6b2d08147904d1c6d3d7fb1c13659855571246854d6a69"
+    }
+  ]
+}

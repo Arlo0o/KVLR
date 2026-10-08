@@ -1,0 +1,4 @@
+task_name,video_id,frame_num,image_path,prompt,save_file,checkpoint_override
+knotting,example_knotting_0001,17,./data/kasa/frames/knotting/example_knotting_0001/frame_000000.png,"Robotic arms position suture strands over tissue. The large needle driver moves from left to right to form a knot while forceps stabilize the target area.",,
+needleGrasping,example_needle_grasping_0001,17,./data/kasa/frames/needleGrasping/example_needle_grasping_0001/frame_000000.png,"The large needle driver approaches the needle, grasps it near the shaft, and lifts away while the forceps maintain a stable view.",,
+needlePuncture,example_needle_puncture_0001,17,./data/kasa/frames/needlePuncture/example_needle_puncture_0001/frame_000000.png,"The needle driver aligns the needle tip with tissue and punctures at a controlled angle while the assistant instrument provides counter-tension.",,
