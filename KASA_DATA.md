@@ -86,6 +86,28 @@ unzip /path/to/needleGrasping.zip -d data/kasa/videos
 unzip /path/to/needlePuncture.zip -d data/kasa/videos
 ```
 
+## Source Data and Citation
+
+Part of the source surgical videos used in KASA comes from the Basic Surgical
+Actions (BSA) dataset introduced by Mengya Xu et al. We acknowledge the original
+data contributors. Please refer to and cite the following paper when using the
+corresponding data, in addition to citing KVLR:
+
+[Generalized Recognition of Basic Surgical Actions Enables Skill Assessment and Vision-Language-Model-based Surgical Planning](https://arxiv.org/abs/2603.12787).
+
+```bibtex
+@article{xu2026generalized,
+  title={Generalized Recognition of Basic Surgical Actions Enables Skill Assessment and Vision-Language-Model-based Surgical Planning},
+  author={Xu, Mengya and Shen, Daiyun and Zhang, Jie and others},
+  journal={arXiv preprint arXiv:2603.12787},
+  year={2026},
+  eprint={2603.12787},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2603.12787}
+}
+```
+
 ## Usage and Attribution
 
 The repository's code license does not grant redistribution rights to underlying

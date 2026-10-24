@@ -31,6 +31,12 @@ and metric evaluation code.
 - Checkpoints: https://drive.google.com/drive/folders/1KRLFxWvjmfTTtImigWUMKXWAU6mhX1o5?usp=sharing
 - KASA action annotations and demo: https://drive.google.com/drive/folders/14vHj7IB-pA09QhrYT7D06Ei6A6md3z8k?usp=sharing
 
+**Source-data attribution:** Part of the source surgical videos used in KASA comes
+from the Basic Surgical Actions (BSA) dataset introduced by Mengya Xu et al. in
+[Generalized Recognition of Basic Surgical Actions Enables Skill Assessment and Vision-Language-Model-based Surgical Planning](https://arxiv.org/abs/2603.12787).
+Please also cite this work when using the corresponding data. See
+[data-source citation](KASA_DATA.md#source-data-and-citation) for BibTeX.
+
 The public data folder currently contains:
 
 - `annotations.zip`: the full released action annotations as per-instance `memory_pool.pth` files, grouped by action and clip. It does not include video files, captions, or split/task CSV files; see the [archive inventory](KASA_DATA.md#annotation-archive-inventory).
