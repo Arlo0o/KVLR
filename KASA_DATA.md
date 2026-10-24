@@ -8,7 +8,7 @@
 
 | Asset | Public access | Contents |
 | --- | --- | --- |
-| `annotations.zip` | Available | Full action annotations, captions, split/task CSV files, and action utility files |
+| `annotations.zip` | Available | Full released action annotations: per-instance `memory_pool.pth` files grouped by action and clip |
 | `KVLR_demo.mp4` | Available | The existing project-page presentation video with selected examples |
 | `knotting.zip` | Temporarily restricted | Full knotting videos |
 | `needleGrasping.zip` | Temporarily restricted | Full needle-grasping videos |
@@ -42,6 +42,24 @@ Download and extract the public annotations:
 mkdir -p data/kasa/annotations
 unzip /path/to/annotations.zip -d data/kasa/annotations
 ```
+
+## Annotation Archive Inventory
+
+The public archive was inspected on 2026-10-24. It contains 1,382
+`memory_pool.pth` files in these directories:
+
+| Directory | Per-instance annotation files |
+| --- | ---: |
+| `knotting_results/` | 86 |
+| `needleGrasping_results/` | 676 |
+| `needlePuncture_results/` | 620 |
+
+These counts describe annotation files, not unique videos or frames. The archive
+does not contain video/image files, captions, or split/task CSV files. References
+to those additional inputs in training examples describe required workflow inputs,
+not extra files bundled in this download. Keep the extracted `*_results/`
+directories under `data/kasa/annotations/`; the action loader supports this
+per-instance layout.
 
 ## Full-Video Layout (Authorized Copies or Future Release)
 

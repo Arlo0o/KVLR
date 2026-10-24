@@ -33,7 +33,7 @@ and metric evaluation code.
 
 The public data folder currently contains:
 
-- `annotations.zip`: the full action-annotation release, captions, split/task CSV files, and action utility files.
+- `annotations.zip`: the full released action annotations as per-instance `memory_pool.pth` files, grouped by action and clip. It does not include video files, captions, or split/task CSV files; see the [archive inventory](KASA_DATA.md#annotation-archive-inventory).
 - `KVLR_demo.mp4`: the existing project-page demonstration, showing selected examples.
 
 The complete `knotting.zip`, `needleGrasping.zip`, and `needlePuncture.zip` archives
