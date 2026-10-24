@@ -11,7 +11,7 @@ Implementation source: the previously backed-up code snapshot at
 snapshot. This is a renewed public release, not a claim of new model training
 or new experimental results on this date.
 
-Every distributed file is marked `released` with update date `2026-10-08` in
+Every file distributed in the 2026-10-08 code snapshot is marked `released` with that date in
 `release-manifest.json`, with its size and SHA-256 digest. The manifest itself
 is excluded from its own file list to avoid a self-referential digest.
 
@@ -25,3 +25,18 @@ conditions continue to apply.
 - [Project page](https://arlo0o.github.io/KVLR-project/)
 - [Paper](https://arxiv.org/abs/2605.08712)
 - [Demo](https://arlo0o.github.io/KVLR-project/#demo)
+
+## Data-Access Update - 2026-10-24
+
+Full action annotations remain publicly available. Full source-video archives
+are temporarily restricted, not deleted, while data ownership, attribution, and
+redistribution permissions are coordinated with contributing partners. Only the
+existing selected-example project demo is publicly shared as video at this stage.
+The complete videos are planned for release once the necessary permissions are
+confirmed. See [KASA data access](KASA_DATA.md) for the current public files and
+the limitations this places on full training and evaluation.
+
+This is a data-access and documentation update, not a new code or checkpoint
+release. Runtime code, checkpoint links, and the historical 2026-10-08 manifest
+are unchanged; that manifest records the original snapshot, not later documentation
+revisions.

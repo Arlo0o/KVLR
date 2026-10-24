@@ -11,6 +11,13 @@ and the [dated file manifest](release-manifest.json) for this release.
 
 [Project Page](https://arlo0o.github.io/KVLR-project/) | [Paper](https://arxiv.org/abs/2605.08712) | [Video](https://arlo0o.github.io/KVLR-project/#demo) | [Citation](#citation)
 
+> **Data availability update (2026-10-24):** Full action annotations remain public.
+> Only a limited video demonstration is currently shared; the full source-video
+> archives are temporarily not publicly accessible while we coordinate data
+> ownership, attribution, and redistribution permissions with contributing partners.
+> We plan to release the complete videos once these matters are resolved and the
+> necessary permissions are confirmed. See [data access details](KASA_DATA.md).
+
 Bohan Li, Shuojue Yang, Baorui Peng, Xianda Guo, Erli Zhang, Youqi Tao, Junfeng Duan, Daguang Xu, Qi Dou, Xin Jin, Wenjun Zeng, Hao Zhao, Yueming Jin.
 
 This repository contains the KVLR implementation.
@@ -22,16 +29,33 @@ and metric evaluation code.
 ## Resources
 
 - Checkpoints: https://drive.google.com/drive/folders/1KRLFxWvjmfTTtImigWUMKXWAU6mhX1o5?usp=sharing
-- KASA data: https://drive.google.com/drive/folders/14vHj7IB-pA09QhrYT7D06Ei6A6md3z8k?usp=sharing
+- KASA action annotations and demo: https://drive.google.com/drive/folders/14vHj7IB-pA09QhrYT7D06Ei6A6md3z8k?usp=sharing
 
-The data folder on Google Drive contains:
+The public data folder currently contains:
 
-- `annotations.zip`: captions, action annotations, split/task CSV files, and action utility files.
-- `knotting.zip`: KASA videos for the knotting subset.
-- `needleGrasping.zip`: KASA videos for the needle-grasping subset.
-- `needlePuncture.zip`: KASA videos for the needle-puncture subset.
+- `annotations.zip`: the full action-annotation release, captions, split/task CSV files, and action utility files.
+- `KVLR_demo.mp4`: the existing project-page demonstration, showing selected examples.
 
-After downloading, a convenient local layout is:
+The complete `knotting.zip`, `needleGrasping.zip`, and `needlePuncture.zip` archives
+are retained privately, not deleted. Their previous public file links are no longer
+available for unauthenticated access. A full-video release date has not yet been set.
+
+The demo is a presentation video, **not** a complete paired training/evaluation
+subset. Action annotations and the demo alone are insufficient to reproduce full
+video training or benchmark scores. Those workflows require an authorized copy of
+the corresponding source videos. Code and checkpoint availability are unchanged.
+
+### Current Public Download
+
+```bash
+mkdir -p data/kasa/annotations
+unzip /path/to/annotations.zip -d data/kasa/annotations
+```
+
+### Full-Video Layout (Authorized Copies or Future Release)
+
+For users who already have authorized access to the videos, or after the complete
+video release, a convenient local layout is:
 
 ```text
 <repo-root>/
@@ -55,7 +79,8 @@ After downloading, a convenient local layout is:
       needlePuncture/
 ```
 
-One possible extraction workflow is:
+The following extraction workflow applies **only if you have authorized copies of
+the full-video archives**; these archives are not part of the current public download:
 
 ```bash
 mkdir -p data/kasa/annotations data/kasa/videos
@@ -103,6 +128,10 @@ paths explicitly to `scripts/evaluate_video_metrics.py`.
 ## Data Preparation
 
 ![KASA construction pipeline](assert/data_curation.png)
+
+The video-dependent preparation, training, and evaluation commands below require
+authorized source videos and matching reference frames; the public demo is not a
+substitute. See [current availability and usage boundaries](KASA_DATA.md).
 
 If you need to rebuild the KVLR-style CSV from KASA captions:
 
